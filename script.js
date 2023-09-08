@@ -19,10 +19,19 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value); //number diyerek girdinin tipini degistirdik
   console.log(guess, typeof guess);
 
+  //when theres no input
   if (!guess) {
     document.querySelector('.message').textContent = 'please choose a number!';
+
+    //if player wins
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'correct number';
+
+    document.querySelector('body').style.backgroundColor = '#60b347';
+
+    document.querySelector('.number').style.width = '30rem';
+
+    //when guess is too high
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'decrease it!';
@@ -32,6 +41,8 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = 'You lost... LOOSER!';
       document.querySelector('.score').textContent = 0;
     }
+
+    //when guess is too low
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'increase it!';
