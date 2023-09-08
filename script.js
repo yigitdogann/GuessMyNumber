@@ -28,12 +28,18 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = 'decrease it!';
       score = score - 1;
       document.querySelector('.score').textContent = score;
-    } else{
-        document.querySelector('.message').textContent='You lost... LOOSER!';
+    } else {
+      document.querySelector('.message').textContent = 'You lost... LOOSER!';
+      document.querySelector('.score').textContent = 0;
     }
   } else if (guess < secretNumber) {
-    document.querySelector('.message').textContent = 'increase it!';
-    score--;
-    document.querySelector('.score').textContent = score;
+    if (score > 1) {
+      document.querySelector('.message').textContent = 'increase it!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = 'You lost... LOOSER!';
+      document.querySelector('.score').textContent = 0;
+    }
   } //sayi girilmemis ise degerini 0 yapar ve 0 da false demektir. ama ben bu if/else calistirmak icin true istiyorum ondan oturu istedigim true sonucunu alabilmek icin basina unlem koydum. yani degilinin degili gibi oldu
 }); //input alanindan girilen cogu bilgi string olarak islenir
