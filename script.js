@@ -14,6 +14,9 @@ document.querySelector('.guess').value=23;
 let secretNumber = Math.trunc(Math.random() * 20) + 1; //1 dahil 20 haric old icin +1 diyerek 20 de dahil ettim
 let score = 20;
 let highscore = 0;
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value); //number diyerek girdinin tipini degistirdik
@@ -21,12 +24,12 @@ document.querySelector('.check').addEventListener('click', function () {
 
   //when theres no input
   if (!guess) {
-    document.querySelector('.message').textContent = '🔢 Enter a number...';
-
+    // document.querySelector('.message').textContent = '🔢 Enter a number...';
+    displayMessage('🔢 Enter a number...');
     //if player wins
   } else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = '😎 You found it dude!!';
-
+    // document.querySelector('.message').textContent = '😎 You found it dude!!';
+    displayMessage('😎 You found it dude!!');
     document.querySelector('.number').textContent = secretNumber;
 
     document.querySelector('body').style.backgroundColor = '#60b347';
@@ -39,8 +42,11 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent =
-        guess > secretNumber ? '🔽 Decrease it!' : '🔼 Increase it!';
+      // document.querySelector('.message').textContent =
+      // guess > secretNumber ? '🔽 Decrease it!' : '🔼 Increase it!';
+      displayMessage(
+        guess > secretNumber ? '🔽 Decrease it!' : '🔼 Increase it!'
+      );
       score--;
       document.querySelector('.score').textContent = score;
     } else {
